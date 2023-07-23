@@ -1,0 +1,287 @@
+#include <FirebaseArduino.h>
+#include <ESP8266WiFi.h>
+#include <ESP8266HTTPClient.h>
+//
+#include <SoftwareSerial.h>
+
+SoftwareSerial arduinoSerial(D4, D5); // RX, TX pins
+//
+#include <Servo.h>
+
+// Replace with your Firebase project's credentials
+#define FIREBASE_HOST "dog-feeder-5457c-default-rtdb.firebaseio.com"
+#define FIREBASE_AUTH "Jm6xENGOGvwwtCDYwA9SeP9ZALhsKkHkWm5TjZsP"
+
+// Replace with your network credentials
+#define WIFI_SSID "NoWifi"
+#define WIFI_PASSWORD "wifi12345"
+#include <NTPtimeESP.h>
+//
+String received;
+byte buffer[sizeof(float)];
+///
+unsigned long previousMillis1 = 0;  // Variable to store the last time the message was printed
+long noDataInterval1;  // Interval for "No data found" message (in milliseconds)
+boolean displayDataFound1 = false;  // Flag to indicate if "Data found" should be displayed
+
+///
+
+
+// Watchdog timer interval in milliseconds
+const unsigned long WATCHDOG_INTERVAL = 1000;
+
+// Timer variables
+unsigned long previousMillis = 0;
+
+
+///
+const unsigned long INTERVAL = 900000; // 15 minutes in milliseconds
+unsigned long previousTime = 0;
+//
+
+#define DEBUG_ON
+int done = 0;
+
+NTPtime NTPch("ch.pool.ntp.org");   // Choose server pool as required
+char *ssid      = "NoWifi";               // Set you WiFi SSID
+char *password  = "wifi12345";               // Set you WiFi password
+
+byte actualHour;
+byte actualMinute;
+byte actualsecond;
+String feeding;
+String feeds;
+String ftrash;
+String timenow;
+
+//String datakg;
+int num = 0;
+strDateTime dateTime;
+
+//
+const int LDR_PIN = A0;       // Analog input pin for LDR
+
+const int LDR_THRESHOLD = 1000;  // Threshold value to determine darkness
+
+//
+
+unsigned long currentTime;
+
+Servo servo, servo1;
+void setup() {
+  Serial.begin(115200);
+  arduinoSerial.begin(115200);
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  Serial.print("Connecting to WiFi");
+  while (WiFi.status() != WL_CONNECTED) {
+    Serial.print(".");
+    delay(500);
+  }
+  //Serial.println();
+  //Serial.print("Connected to WiFi, IP address: ");
+  //Serial.println(WiFi.localIP());
+  Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
+  pinMode(D2, OUTPUT);
+  pinMode(D3, OUTPUT);
+  servo.attach(D0);
+  servo1.attach(D1);
+  servo.write(135);
+  servo1.write(60);
+  digitalWrite(D3, HIGH);
+  digitalWrite(D2, HIGH);
+  while (! Serial);
+  //  initializeWatchdog();
+  ESP.wdtDisable();
+  hw_wdt_disable();
+}
+
+void loop() {
+  fullcode();
+  delay(50);
+  yield();
+}
+//
+//void initializeWatchdog() {
+//  ESP.wdtDisable();
+//  ESP.wdtEnable(0);
+//}
+//
+//// Function to reset the watchdog timer
+//void resetWatchdog() {
+//  ESP.wdtFeed();
+//}
+void hw_wdt_disable() {
+  *((volatile uint32_t*) 0x60000900) &= ~(1); // Hardware WDT OFF
+}
+
+void fullcode() {
+  timedata();
+  feeding = (Firebase.getString("/dogfeeder/user/feed"));
+  feeding.replace("\"", "");
+  delay(50);
+  yield();
+  feeds = (Firebase.getString("/dogfeeder/user/feeding"));
+  feeds.replace("\"", "");
+  delay(50);
+  yield();
+  ftrash = (Firebase.getString("/dogfeeder/user/trash"));
+  ftrash.replace("\"", "");
+  delay(50);
+  yield();
+  //Serial.println(ftrash);
+
+  if (feeds == "yes") {
+    feed();
+    timer();
+
+    delay(50);
+    yield();
+  }
+
+  else if ( ftrash == "yes") {
+    trash();
+    Firebase.setString("/dogfeeder/user/trash", "no");
+    delay(50);
+    yield();
+  } else {
+    kg();
+    led();
+    delay(50);
+    yield();
+    //
+    //Serial.println(feeds);
+    if (feeding == "2") {
+
+      //Serial.println("2 feeding per day");
+      if (timenow == "8:0") {
+        if (num == 0) {
+          currentTime = millis();
+          //Serial.println("feeding now 1st");
+          feed();
+          num = 1;
+          timer();
+        } else {
+          //Serial.println("feeding done");
+        }
+      } if (timenow == "20:0") {
+        if (num == 1) {
+          currentTime = millis();
+          //Serial.println("feeding now 2nd");
+          feed();
+          timer();
+          num = 0;
+        } else {
+          //Serial.println("feeding done");
+        }
+      }
+
+    } else if (feeding == "3") {
+      //Serial.println("3 feeding per day");
+      if (timenow == "8:0") {
+        if (num == 0) {
+          currentTime = millis();
+          //Serial.println("feeding now 2nd");
+          feed();
+          timer();
+          num = 1;
+          //Serial.println("feeding now 1st");
+        }
+      } else if (timenow == "14:0") {
+        if (num == 1) {
+          currentTime = millis();
+          //Serial.println("feeding now 2nd");
+          feed();
+          timer();
+          num = 2;
+          //Serial.println("feeding now 2nd");
+        }
+      } else if (timenow == "20:0") {
+        if (num == 2) {
+          currentTime = millis();
+          //Serial.println("feeding now 2nd");
+          feed();
+          timer();
+          num = 0;
+          //Serial.println("feeding now 2nd");
+        }
+      }
+    } else {
+      //Serial.println("Invalid feeding value");
+    }
+    delay(50);
+    yield();
+  }
+}
+
+void timedata() {
+  // first parameter: Time zone in floating point (for India); second parameter: 1 for European summer time; 2 for US daylight saving time; 0 for no DST adjustment; (contributed by viewwer, not tested by me)
+  dateTime = NTPch.getNTPtime(+8.0, 8);
+
+  // check dateTime.valid before using the returned time
+  // Use "setSendInterval" or "setRecvTimeout" if required
+  if (dateTime.valid) {
+    actualHour = dateTime.hour;
+    actualMinute = dateTime.minute;
+    actualsecond = dateTime.second;
+  }
+  timenow = String(actualHour) + ":" + String(actualMinute);
+  delay(50);
+  yield();
+
+}
+void timer() {
+  if (currentTime - previousTime >= INTERVAL) {
+    previousTime = currentTime; // Reset the timer
+    trash();
+    //Serial.println("Throwing the dog food");
+  }
+}
+
+void feed() {
+  String delay1 = (Firebase.getString("/dogfeeder/user/delay"));
+  delay1.replace("\"", "");
+  digitalWrite(D3, LOW);
+  servo.write(10);
+  delay(delay1.toInt());
+  servo.write(135);
+  digitalWrite(D3, HIGH);
+  delay(delay1.toInt());
+  Firebase.setString("/dogfeeder/user/feeding", "no");
+  yield();
+}
+void trash() {
+  servo1.write(180);
+  delay(1000);
+  servo1.write(-180);
+  delay(1000);
+  servo1.write(60);
+  delay(50);
+  yield();
+}
+
+void kg() {
+ if (arduinoSerial.available()) {
+    String receivedMessage = arduinoSerial.readStringUntil('\n'); 
+    Serial.println(receivedMessage);
+   Firebase.setString("/dogfeeder/user/weight", receivedMessage);
+   delay(50);
+   yield();
+  }
+}
+
+///
+
+void led() {
+  int ldrValue = analogRead(LDR_PIN);
+
+  if (ldrValue < LDR_THRESHOLD) {
+    //Serial.println("On Light");
+    digitalWrite(D2, HIGH);  // Turn on the light
+  } else {
+    //Serial.println("OFF Light");
+    digitalWrite(D2, LOW);   // Turn off the light
+  }
+  //Serial.print("LDR Value: ");
+  //Serial.println(ldrValue);
+
+}

@@ -1,0 +1,15 @@
+#include <SoftwareSerial.h>
+
+SoftwareSerial arduinoSerial(D4, D5); // RX, TX pins
+
+void setup() {
+  Serial.begin(9600); 
+  arduinoSerial.begin(115200);
+}
+
+void loop() {
+  if (arduinoSerial.available()) {
+    String receivedMessage = arduinoSerial.readStringUntil('\n'); 
+    Serial.println("Message received from Arduino: " + receivedMessage); 
+  }
+}
