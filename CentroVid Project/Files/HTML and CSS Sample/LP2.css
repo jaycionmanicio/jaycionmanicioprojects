@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    width: 1170px;
+    margin: auto;
+}
+
+body{
+
+  font-family: 'Poppins', sans-serif;
+}
+
+.welcome-textto
+{
+  position: absolute;
+  width: 500px;
+  height: 250px;
+  margin: 0% 29%;
+  text-align: center;
+  padding: 8px 8px;
+  line-height: 55px;
+  border: 6px solid #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 15px;
+  margin-top: 20px;
+  display: inline-block;
+  font-weight: bolder;
+  background: #333;
+}
+
+
+.footer{
+ background:#333;
+ margin-top: 400px; 
+}
+
+.footer .box-container{
+  display: flex;
+  flex-wrap: wrap;
+  text-align: justify;
+  gap:5rem;
+}
+
+.footer .box-container .box{
+  padding: 8px 8px;
+
+  flex:5 5 25rem;
+}
+
+.footer .box-container .box h3{
+  font-size: 20px;
+  text-align: justify;
+  padding: 15px 30px;
+  color:#fff;
+}
+
+.footer .box-container .box h4{
+  font-size: 20px;
+  text-align: justify;
+  padding: 15px 20px;
+  color:#fff;
+}
+
+.footer .box-container .box p{
+  font-size: 20px;
+  padding: 15px 30px;
+  color:#eee;
+}
+
+.footer .box-container .box a{
+  display: block;
+  font-size: 20px;
+  padding: 8px 30px;
+  color:#eee;
+}
+
+.footer .box-container .box a:hover{
+  color:#87CEEB;
+  text-decoration: underline;
+}
+
+.footer .credit{
+  text-align: center;
+  padding: 8px 8px;
+  margin-top: 51 rem;
+  font-size: 20px;
+  font-weight: normal;
+  color:#fff;
+  border-top: .2rem solid rgba(255,255,255,.2);
+}
+
+.footer .credit span{
+  color: #87CEEB;
+} 
+
+
+.welcome-textA {
+  position: absolute;
+  width: 600px;
+  height: 300px;
+  margin: 5% 30%;
+  text-align: center;
+}
+.welcome-textA h1 {
+  text-align: center;
+  color: #333;
+  text-transform: uppercase;
+  font-size: 50px;
+}
+.welcome-textA h1 span {
+  color: #fff;
+
+}
+.welcome-textA a {
+  border: 3px solid #333;
+  padding: 8px 8px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 20px;
+  margin-top: -50px;
+  display: inline-block;
+  color: #333;
+  font-weight: bolder;
+}
+.welcome-textA a:hover {
+  background: #333;
+  color: #fff;
+}

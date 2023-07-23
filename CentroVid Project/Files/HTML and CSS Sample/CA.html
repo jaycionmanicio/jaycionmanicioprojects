@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="LP2.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+    //Array of JSON objects.
+    var markers = [
+     {
+        "title": 'Talon Uno Covered Court',
+        "lat": '14.4388',
+        "lng": '121.0027',
+        "description": 'Talon Uno Covered Court'
+},
+{
+        "title": 'Talon 3 Elementary School',
+        "lat": '14.4427',
+        "lng": '121.0011',
+        "description": 'Talon 3 Elementary School'
+},
+{
+        "title": 'Talon Elementary School',
+        "lat": '14.4460',
+        "lng": '120.9883',
+        "description": 'Talon Elementary School'
+},
+{
+        "title": 'Colours Town Center',
+        "lat": '14.4366',
+        "lng": '121.0069',
+        "description": 'Colours Town Center'
+},
+{
+        "title": 'Robinsons Place',
+        "lat": '14.442297',
+        "lng": '120.997742',
+        "description": 'Robinsons Place'
+},
+{
+        "title": 'Talon Village Open Court',
+        "lat": '14.4350',
+        "lng": '121.0011',
+        "description": 'Talon Village Open Court'
+},
+{
+        "title": 'Sihanouk Village Basketball Court',
+        "lat": '14.4343',
+        "lng": '120.9997',
+        "description": 'Sihanouk Village Basketball Court'
+},
+{
+        "title": 'Talon Tres Covered Basketball Court',
+        "lat": '14.4423',
+        "lng": '121.0015',
+        "description": 'Talon Tres Covered Basketball Court'
+}
+ 
+    ];
+
+
+    window.onload = function () {
+        LoadMap();
+    }
+    function LoadMap() {
+        var mapOptions = {
+            center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+            zoom: 8,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var infoWindow = new google.maps.InfoWindow();
+        var latlngbounds = new google.maps.LatLngBounds();
+        var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+ 
+        for (var i = 0; i < markers.length; i++) {
+            var data = markers[i]
+            var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                title: data.title
+            });
+            (function (marker, data) {
+                google.maps.event.addListener(marker, "click", function (e) {
+                    infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" + data.description + "</div>");
+                    infoWindow.open(map, marker);
+                });
+            })(marker, data);
+            latlngbounds.extend(marker.position);
+        }
+        var bounds = new google.maps.LatLngBounds();
+        map.setCenter(latlngbounds.getCenter());
+        map.fitBounds(latlngbounds);
+
+var circle = L.circle([14.4032, 121.008], {
+    radius:500, 
+    color: 'green', 
+    fillColor: 'red',
+    fillOpacity:0.2
+}).addTo(map).bindPopup('Centroid')
+
+    }
+</script>
+<div id="dvMap" style="width: 1520px; height: 600px">
+</div>
+
+    </script>
+
+    <div class="welcome-textto">
+
+        <div class="box">
+            <h5 style="color:white">Top 1 Nearest Vaccination Site in Cluster Group A</h5>
+            <p style="color:white"> 
+              1st :   Talon Uno Covered Court            
+            </p>
+
+            <p style="color:white"> 
+              Distance: 0.001 Euclidean Distance  
+            </p>
+        </div>
+</div>
+ 
+  </head>
+  
+  <body>
+   
+    <body style = "  background: url(file:///C:/Users/DELL/Desktop/Aida%20HomePage/BrgyBackground.jpg); ">
+</div>
+
+<!-- footer section  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>About us</h3>
+            <p>This project was developed by a group of 4th Year Computer Engineering Students 
+            as a final requirement for their course, CPE Elective 3AIDA – Deep Learning. 
+            This web application serves as a recommendation system for the LGUs of Las Piñas 
+            in determining all of the possible vaccination sites along with the city, 
+            considering the utmost convenience for the people. The problem was methodically 
+            identified through interviews, observations, numerous documentation, and surveys 
+            of the people from all over the NCR Region; however, due to limited time frame 
+            and resources, the TSDC group was only able to develop solutions for the city 
+            of Las Piñas only.</p>
+        </div>
+        <div class="box">
+            <h3>Quick links</h4>
+            <a href="AIDAWebpage.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="Team.html">Team</a>
+            <a href="Mission.html">Mission</a>
+            <a href="Vision.html">Vission</a>
+        </div>
+        <div class="box">
+            <h3>Follow us</h4>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+
+    </div>
+    <h1 class="credit"> created by <span> Group TSDC </span> | all rights reserved! </h1>
+
+   <script src="sj.js"></script>  
+</section>
+
+  </body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="LP2.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+    //Array of JSON objects.
+    var markers = [
+
+     {
+        "title": 'Ilaya  ',
+        "lat": '14.477900',
+        "lng": '120.980100    ',
+        "description": "Ilaya   "
+    },
+
+     {
+        "title": 'Talon Tres',
+        "lat": '14.467700',
+        "lng": '120.986200  ',
+        "description": "Talon Kuatro "
+    },
+
+        {
+        "title": 'Manuyo Dos  ',
+        "lat": '14.479300  ',
+        "lng": '120.990600   ',
+        "description": "Manuyo Dos   "
+    },
+
+        {
+        "title": 'Elias Aldanas',
+        "lat": '14.478700 ',
+        "lng": '120.976900   ',
+        "description": 'Elias Aldana'
+    },
+
+        {
+        "title": 'Daniel Fajardo',
+        "lat": '14.48070 ',
+        "lng": '120.981200 ',
+        "description": 'Daniel Fajardo'
+    },
+
+            {
+        "title": 'Pulang Lupa Uno  ',
+        "lat": '14.471282',
+        "lng": '120.977314 ',
+        "description": 'Pulang Lupa Uno  '
+    },
+
+             {
+        "title": 'Centroid ',
+        "lat": '14.47593041 ',
+        "lng": '120.98275232 ',
+        "description": "Centroid"
+    },
+ 
+    ];
+
+    window.onload = function () {
+        LoadMap();
+    }
+    function LoadMap() {
+        var mapOptions = {
+            center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+            zoom: 8,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var infoWindow = new google.maps.InfoWindow();
+        var latlngbounds = new google.maps.LatLngBounds();
+        var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+ 
+        for (var i = 0; i < markers.length; i++) {
+            var data = markers[i]
+            var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                title: data.title
+            });
+            (function (marker, data) {
+                google.maps.event.addListener(marker, "click", function (e) {
+                    infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" + data.description + "</div>");
+                    infoWindow.open(map, marker);
+                });
+            })(marker, data);
+            latlngbounds.extend(marker.position);
+        }
+        var bounds = new google.maps.LatLngBounds();
+        map.setCenter(latlngbounds.getCenter());
+        map.fitBounds(latlngbounds);
+
+const circle = L.circle([14.4032, 121.008], {
+    radius:500, 
+    color: 'green', 
+    fillColor: 'red',
+    fillOpacity:0.2
+}).addTo(mapTypeId).bindPopup('Centroid')
+
+    }
+</script>
+<div id="dvMap" style="width: 1520px; height: 600px">
+</div>
+
+    </script>
+
+       <div class="welcome-textA">
+
+<a href="CB.html">Possible Vaccination Sites and Nearest Vaccination Site</a>
+    </div>
+ 
+
+ 
+  </head>
+  
+  <body>
+   
+    <body style = "  background: url(file:///C:/Users/DELL/Desktop/Aida%20HomePage/BrgyBackground.jpg); ">
+</div>
+
+<!-- footer section  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>About us</h3>
+            <p>This project was developed by a group of 4th Year Computer Engineering Students 
+            as a final requirement for their course, CPE Elective 3AIDA – Deep Learning. 
+            This web application serves as a recommendation system for the LGUs of Las Piñas 
+            in determining all of the possible vaccination sites along with the city, 
+            considering the utmost convenience for the people. The problem was methodically 
+            identified through interviews, observations, numerous documentation, and surveys 
+            of the people from all over the NCR Region; however, due to limited time frame 
+            and resources, the TSDC group was only able to develop solutions for the city 
+            of Las Piñas only.</p>
+        </div>
+        <div class="box">
+            <h3>Quick links</h4>
+            <a href="AIDAWebpage.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="Team.html">Team</a>
+            <a href="Mission.html">Mission</a>
+            <a href="Vision.html">Vission</a>
+        </div>
+        <div class="box">
+            <h3>Follow us</h4>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+
+    </div>
+    <h1 class="credit"> created by <span> Group TSDC </span> | all rights reserved! </h1>
+
+   <script src="sj.js"></script>  
+</section>
+
+  </body>
+</html>

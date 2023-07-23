@@ -1,0 +1,114 @@
+<html>
+  <head>
+        <link href="LP.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {
+        "packages":["map"],
+        "mapsApiKey": "AIzaSyA5yvU1R6DI16tr9OerXVYBuSUSfevOud8"
+      });
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Lat', 'Long', 'Name'],
+	[14.4490, 120.9807, 'SM Center Las Piñas'],
+	[14.4508, 120.9786, 'Vista Mall Las Piñas'],
+	[14.4533, 120.9764, 'Cosco Mall (Puregold)'],
+	[14.4535, 120.9755, 'Starmall Annex'],
+	[14.4537, 120.9794, 'Doña Manuela Elementary School'],
+	[14.4541, 120.9806, 'Verdant Covered Court'],
+	[14.4542, 120.9804, 'Las Piñas East National Highschool'],
+	[14.45559, 120.98394, 'Pamplona 3 Health Center']
+[14.4507, 120.9826, 'Social Development Center']
+
+
+
+  
+        ]);
+
+        var options = {
+          icons: {
+            default: {
+              normal: 'https://icons.iconarchive.com/icons/icons-land/vista-map-markers/48/Map-Marker-Ball-Azure-icon.png',
+
+              selected: 'https://icons.iconarchive.com/icons/icons-land/vista-map-markers/48/Map-Marker-Ball-Right-Azure-icon.png'
+            }
+          }
+        };
+        var map = new google.visualization.Map(document.getElementById('map_markers_div'));
+        map.draw(data, options);
+      }
+
+   
+
+
+
+    </script>
+<div class="welcome-textto">
+
+        <div class="box">
+            <h5 style="color:white">Top 3 Nearest Vaccination Sites in your area </h5>
+            <p style="color:white"> 
+              1st :   Talon Singko        Distance: 100km
+            </p>
+
+            <p style="color:white"> 
+              2nd :   Talon Singko        Distance: 100km
+            </p>
+
+            <p style="color:white"> 
+              3rd :   Talon Singko        Distance: 100km
+            </p>
+        </div>
+</div>
+
+
+
+  <body>
+        <header>
+    <center><h1 margin-top =100px>Cluster Group D</h1><center>
+    <div id="map_markers_div" style="width: 1400px; height: 450px"></div>
+        <body style = "  background: url(file:///C:/Users/DELL/Desktop/Aida%20HomePage/BrgyBackground.jpg); background size: 50% 50%;">
+<!-- footer section  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>About us</h3>
+            <p>This project was developed by a group of 4th Year Computer Engineering Students 
+            as a final requirement for their course, CPE Elective 3AIDA – Deep Learning. 
+            This web application serves as a recommendation system for the LGUs of Las Piñas 
+            in determining all of the possible vaccination sites along with the city, 
+            considering the utmost convenience for the people. The problem was methodically 
+            identified through interviews, observations, numerous documentation, and surveys 
+            of the people from all over the NCR Region; however, due to limited time frame 
+            and resources, the TSDC group was only able to develop solutions for the city 
+            of Las Piñas only.</p>
+        </div>
+        <div class="box">
+            <h3>Quick links</h4>
+            <a href="AIDAWebpage.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="Team.html">Team</a>
+            <a href="Mission.html">Mission</a>
+            <a href="Vision.html">Vission</a>
+        </div>
+        <div class="box">
+            <h3>Follow us</h4>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+
+    </div>
+    <h1 class="credit"> created by <span> Group TSDC </span> | all rights reserved! </h1>
+           <script type="module" src="./index.js"></script>
+</section>
+
+        
+  </body>
+
+</html>

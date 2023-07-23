@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="LP1.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {
+        "packages":["map"],
+        "mapsApiKey": "AIzaSyA5yvU1R6DI16tr9OerXVYBuSUSfevOud8"
+      });
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Lat', 'Long', 'Name'],
+          [14.4032, 121.0083, 'Almanza Dos'],          
+          [14.4321, 121.014, 'Almanza Uno '],
+          [14.4508, 121.0055, 'B.F International Village'],
+          [14.4807, 120.9812, 'Daniel Fajardo'],
+          [14.4779, 120.9801, 'Elias Aldana '],
+          [ 14.4787, 120.9769, 'Ilaya'],
+          [14.4677, 120.9948, 'Manuyo Dos'],
+          [14.4793, 120.9862, 'Manuyo Uno '],
+          [14.4474, 120.9747, 'Pamplona Dos'],
+          [14.4581, 120.9719, 'Pamplona Uno'],
+          [14.452, 120.9846, 'Pamplona Tres'], 
+          [14.422, 121.0082, 'Pilar'],
+          [14.4374, 120.9906, 'Talon Dos'],
+          [14.4359, 121.0005, 'Talon Kuatro'],
+          [14.4432, 121.0034, 'Talon Tres'],
+          [14.445335, 120.988404, 'Talon Uno  '],
+          [14.4205, 121.0025, 'Talon Singko'],
+          [14.45056, 120.98278, 'Zapote'],
+          [14.47128246, 120.9773139, 'Pulang Lupa Uno'],
+          [14.4614981, 120.9865476, 'Pulang Lupa Dos']   
+        ]);
+
+        var options = {
+          icons: {
+            default: {
+              normal: 'https://icons.iconarchive.com/icons/icons-land/vista-map-markers/48/Map-Marker-Ball-Azure-icon.png',
+
+              selected: 'https://icons.iconarchive.com/icons/icons-land/vista-map-markers/48/Map-Marker-Ball-Right-Azure-icon.png'
+            }
+          }
+        };
+        var map = new google.visualization.Map(document.getElementById('map_markers_div'));
+        map.draw(data, options);
+      }
+
+    </script>
+ 
+  </head>
+  
+  <body>
+   
+    <div class="wrapper">
+      <div class="search-input">
+        <a href="" target="_blank" hidden></a>
+        <input type="text" placeholder="Type to search..">
+        <div class="autocom-box">
+          <!-- here list are inserted from javascript -->
+        </div>
+        <div class="icon"><i class="fas fa-search"></i></div>
+      </div>
+    </div>
+        <header>
+
+    <header>
+<div class="map">
+    <div>
+    <h1>Las Piñas City</h1></div>
+    <div id="map_markers_div" style="width: 1490px; height: 500px"></div>
+
+    <body style = "  background: url(file:///C:/Users/DELL/Desktop/Aida%20HomePage/BrgyBackground.jpg); ">
+</div>
+
+<!-- footer section  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>About us</h3>
+            <p>This project was developed by a group of 4th Year Computer Engineering Students 
+            as a final requirement for their course, CPE Elective 3AIDA – Deep Learning. 
+            This web application serves as a recommendation system for the LGUs of Las Piñas 
+            in determining all of the possible vaccination sites along with the city, 
+            considering the utmost convenience for the people. The problem was methodically 
+            identified through interviews, observations, numerous documentation, and surveys 
+            of the people from all over the NCR Region; however, due to limited time frame 
+            and resources, the TSDC group was only able to develop solutions for the city 
+            of Las Piñas only.</p>
+        </div>
+        <div class="box">
+            <h3>Quick links</h4>
+            <a href="AIDAWebpage.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="Team.html">Team</a>
+            <a href="Mission.html">Mission</a>
+            <a href="Vision.html">Vission</a>
+        </div>
+        <div class="box">
+            <h3>Follow us</h4>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+
+    </div>
+    <h1 class="credit"> created by <span> Group TSDC </span> | all rights reserved! </h1>
+
+    <script src="sbsugesstion.js"></script> 
+   <script src="sbscript.js"></script>  
+</section>
+
+  </body>
+</html>

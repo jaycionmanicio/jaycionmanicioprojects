@@ -1,0 +1,375 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Poppins', sans-serif;   
+}
+.wrapper {
+    width: 1170px;
+    margin: auto;
+}
+
+body{
+
+  font-family: 'Poppins', sans-serif;
+}
+
+.welcome-textto
+{
+  position: absolute;
+  width: 700px;
+  height: 400px;
+  margin: 0% 1%;
+  text-align: center;
+  padding: 8px 8px;
+  line-height: 55px;
+  border: 6px solid #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 15px;
+  margin-top: -900px;
+  display: inline-block;
+  font-weight: bolder;
+  background: #333;
+}
+
+.welcome-textto1
+{
+  position: absolute;
+  width: 700px;
+  height: 400px;
+  margin: 0% 50%;
+  text-align: center;
+  padding: 8px 8px;
+  line-height: 55px;
+  border: 6px solid #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 15px;
+  margin-top: -900px;
+  display: inline-block;
+  font-weight: bolder;
+  background: #333;
+}
+
+.welcome-textto2
+{
+  position: absolute;
+  width: 700px;
+  height: 400px;
+  margin: 0% 1%;
+  text-align: center;
+  padding: 8px 8px;
+  line-height: 55px;
+  border: 6px solid #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 15px;
+  margin-top: -450px;
+  display: inline-block;
+  font-weight: bolder;
+  background: #333;
+}
+
+.welcome-textto3
+{
+  position: absolute;
+  width: 700px;
+  height: 400px;
+  margin: 0% 50%;
+  text-align: center;
+  padding: 8px 8px;
+  line-height: 55px;
+  border: 6px solid #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 15px;
+  margin-top: -450px;
+  display: inline-block;
+  font-weight: bolder;
+  background: #333;
+}
+
+
+
+.welcome-text0 {
+  text-align: center;
+  position: absolute;
+  width: 600px;
+  height: 300px;
+  margin: -80% 10%;
+
+  text-align: center;
+}
+.welcome-text0 h1 {
+  text-align: center;
+  color: #333;
+  text-transform: uppercase;
+  font-size: 50px;
+
+}
+.welcome-text0 h1 span {
+  color: #fff;
+
+}
+.welcome-text0 a {
+
+
+  border: 3px solid #333;
+  padding: 8px 8px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 20px;
+  margin-top: 78px;
+  display: inline-block;
+  color: #333;
+  font-weight: bolder;
+}
+.welcome-text0 a:hover {    text-align: center;
+  background: #333;
+  color: #fff;
+}
+
+.welcome-text1 {
+  position: absolute;
+  width: 600px;
+  height: 300px;
+  margin: -70% 10%;
+  text-align: center;
+}
+.welcome-text1 h1 {
+  text-align: center;
+  color: #333;
+  text-transform: uppercase;
+  font-size: 50px;
+}
+.welcome-text1 h1 span {
+  color: #fff;
+
+}
+.welcome-text1 a {
+  border: 3px solid #333;
+  padding: 8px 8px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 20px;
+  margin-top: 78px;
+  display: inline-block;
+  color: #333;
+  font-weight: bolder;
+}
+.welcome-text1 a:hover {
+  background: #333;
+  color: #fff;
+}
+
+
+.welcome-text2 {
+  position: absolute;
+  width: 600px;
+  height: 300px;
+  margin: -80% 50%;
+  text-align: center;
+}
+.welcome-text2 h1 {
+  text-align: center;
+  color: #333;
+  text-transform: uppercase;
+  font-size: 50px;
+}
+.welcome-text2 h1 span {
+  color: #fff;
+
+}
+.welcome-text2 a {
+  border: 3px solid #333;
+  padding: 8px 8px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 20px;
+  margin-top: 78px;
+  display: inline-block;
+  color: #333;
+  font-weight: bolder;
+}
+.welcome-text2 a:hover {
+  background: #333;
+  color: #fff;
+}
+.welcome-text3 {
+  position: absolute;
+  width: 600px;
+  height: 300px;
+  margin: -70% 50%;
+  text-align: center;
+}
+.welcome-text3 h1 {
+  text-align: center;
+  color: #333;
+  text-transform: uppercase;
+  font-size: 50px;
+}
+.welcome-text3 h1 span {
+  color: #fff;
+
+}
+.welcome-text3 a {
+  border: 3px solid #333;
+  padding: 8px 8px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 20px;
+  margin-top: 78px;
+  display: inline-block;
+  color: #333;
+  font-weight: bolder;
+}
+.welcome-text3 a:hover {
+  background: #333;
+  color: #fff;
+}
+
+
+
+.footer{
+ background:#333;
+ margin-top: 1200px; 
+}
+
+.footer .box-container{
+  display: flex;
+  flex-wrap: wrap;
+  text-align: justify;
+  gap:5rem;
+}
+
+.footer .box-container .box{
+  padding: 8px 8px;
+
+  flex:5 5 25rem;
+}
+
+.footer .box-container .box h3{
+  font-size: 20px;
+  text-align: justify;
+  padding: 15px 30px;
+  color:#fff;
+}
+
+.footer .box-container .box h4{
+  font-size: 20px;
+  text-align: justify;
+  padding: 15px 20px;
+  color:#fff;
+}
+
+.footer .box-container .box p{
+  font-size: 20px;
+  padding: 15px 30px;
+  color:#eee;
+}
+
+.footer .box-container .box a{
+  display: block;
+  font-size: 20px;
+  padding: 8px 30px;
+  color:#eee;
+}
+
+.footer .box-container .box a:hover{
+  color:#87CEEB;
+  text-decoration: underline;
+}
+
+.footer .credit{
+  text-align: center;
+  padding: 8px 8px;
+  margin-top: 51 rem;
+  font-size: 20px;
+  font-weight: normal;
+  color:#fff;
+  border-top: .2rem solid rgba(255,255,255,.2);
+}
+
+.footer .credit span{
+  color: #87CEEB;
+}    
+
+.wrapper{
+  max-width: 450px;
+  margin: 70px auto;
+}
+
+.wrapper .search-input{
+  background: #fff;
+  width: 95%;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.12);
+}
+
+.search-input input{
+
+  height: 55px;
+  width: 70%;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 0 60px 0 20px;
+  font-size: 18px;
+  box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
+}
+
+.search-input.active input{
+  border-radius: 5px 5px 0 0;
+}
+
+.search-input .autocom-box{
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.search-input.active .autocom-box{
+  padding: 10px 8px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.autocom-box li{
+  list-style: none;
+  padding: 8px 12px;
+  display: none;
+  width: 100%;
+  cursor: default;
+  border-radius: 3px;
+}
+
+.search-input.active .autocom-box li{
+  display: block;
+}
+.autocom-box li:hover{
+  background: #efefef;
+}
+
+.search-input .icon{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 55px;
+  width: 55px;
+  text-align: center;
+  line-height: 55px;
+  font-size: 20px;
+  color: #644bff;
+  cursor: pointer;
+}
+.var{
+      margin: 1000px auto;
+
+}  
+
+    
